@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Beginners</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 5%;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .active {
+            background: salmon;
+            border: 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <header>
+            <img src="https://vuejs.org/images/logo.svg" width="80" alt="">
+            <h1 v-text="bilangan"></h1>
+            <p><input type="text" v-model="name "></p>
+            <ul>
+                <li v-for="(item, index) of kelas">{{ index+1 }} - {{ item }}</li>
+            </ul>
+            <h3>Perulangan (1-5)</h3>
+            <ul>
+                <li v-for="x in 5">{{ x }}</li>
+            </ul>
+            <p>{{ kelas }}</p>
+            <div>
+                <label for=""><input type="checkbox" name="" id="" value="React" v-model="kelas"> React</label>
+                <label for=""><input type="checkbox" name="" id="" value="Vuejs" v-model="kelas"> Vuejs</label>
+                <label for=""><input type="checkbox" name="" id="" value="Angular" v-model="kelas"> Angular</label>
+            </div>
+            <p>Bilangan ini adalah bilangan {{ infoBilangan }}</p>
+            <p>
+                <button @click="handleClick">Ditekan</button>
+            </p>
+            <img :src="gambar" alt="" width="500">
+            <p>The Prograssive JavaScript Framework</p>
+
+            <button v-bind:class="{active: menu === 'home'}" v-on:click=" menu = 'home'">Home</button>
+            <button v-bind:class="{active: menu === 'about'}" v-on:click=" menu = 'about'">About</button>
+            <button v-bind:class="{active: menu === 'blog'}" v-on:click=" menu = 'blog'">Blog</button>
+        </header>
+
+        <footer id="footer">
+            <p>copyright 2021 | Semangat Pog!</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'Doremi Fasilasido',
+                message: "Hello World!",
+                qty: 3,
+                namaDepan: 'Stephanus',
+                namaBelakang: 'Yogi',
+                bilangan: 1,
+                link: '<a href="#">Link Test</a>',
+                gambar: 'Image/image.jpg',
+                menu: 'home',
+                kelas: ['Golang', 'PHP', 'Python']
+            },
+            methods: {
+                getName: function() {
+                    return 'Hello, ' + this.name
+                },
+                ubahNama: function(namabaru) {
+                    this.name = namabaru
+                    return this.getName()
+                },
+                handleClick: function() {
+                    this.bilangan++
+                        this.gambar = 'Image/image2.jpg'
+                }
+            },
+            computed: {
+                totalBayar: function() {
+                    return this.qty * 10000
+                },
+                namaLengkap: function() {
+                    return this.namaDepan + this.namaBelakang
+                },
+                infoBilangan: function() {
+                    return this.bilangan % 2 === 0 ? 'Genap' : 'Ganjil'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

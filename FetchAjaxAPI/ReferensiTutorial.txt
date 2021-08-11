@@ -1,3 +1,23 @@
 Sumber :
 Channel => Programmer Zaman Now
 Link => https://www.youtube.com/watch?v=LLT6EAtX-x8
+
+A. Asynchronus
+
+   Perbedaan :
+	Synchronus => Dieksekusi baris per baris
+		   => Proses Blocking (Setiap block proses selesai baru proses selanjutnya)
+	Asynchronus=> Tidak menunggu baris per baris
+		   => Non-Blocking
+
+B. CallBack
+
+   => Mekanisme untuk memanggil kembali kode yang ada di program proses Async
+   => CallBack biasa dibuat dalam bentuk function, dan akan diekseskusi setellah Async selesai
+
+C. AJAX
+
+   => Singkatan Asynchronus Javascript and XML
+   => digunakan untuk mengambil dara dari server
+   => mengubah tampilan web tanpa harus me-reload page
+   => mengirim data ke server secara async di background
