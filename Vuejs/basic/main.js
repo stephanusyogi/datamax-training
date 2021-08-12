@@ -11,7 +11,8 @@ const vm = new Vue({
         gambar: 'Image/image.jpg',
         menu: 'home',
         kelas: ['Golang', 'PHP'],
-        numbers: [1, 2, 3, 4, 5]
+        numbers: [1, 2, 3, 4, 5],
+        kelasbaru: ''
     },
     methods: {
         getName: function() {
@@ -35,8 +36,8 @@ const vm = new Vue({
         },
         submit: function(event) {
             let task = event.target.value
-            console.log(task);
-            // this.kelas.push(task)
+            this.kelas.unshift(this.kelasbaru)
+            this.kelasbaru = ''
         }
     },
     computed: {

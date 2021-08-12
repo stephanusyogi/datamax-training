@@ -30,7 +30,7 @@
             <img src="https://vuejs.org/images/logo.svg" width="80" alt="">
             <h1 v-text="bilangan"></h1>
             <h3>Form Submit</h3>
-            <p><input type="text" placeholder="Nama Kelas" v-on:keyup.enter="submit"></p>
+            <p><input type="text" placeholder="Nama Kelas" v-on:keyup.enter="submit" v-model="kelasbaru"></p>
 
             <h3>Daftar Kelas : {{ kelas.length }}</h3>
             <ul>
