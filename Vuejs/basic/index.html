@@ -29,13 +29,16 @@
         <header>
             <img src="https://vuejs.org/images/logo.svg" width="80" alt="">
             <h1 v-text="bilangan"></h1>
-            <p><input type="text" v-model="name "></p>
+            <h3>Form Submit</h3>
+            <p><input type="text" placeholder="Nama Kelas" v-on:keyup.enter="submit"></p>
 
             <h3>Daftar Kelas : {{ kelas.length }}</h3>
-            <ul v-if="kelas.length">
-                <li v-for="(item, index) of kelas">{{ index+1 }} - {{ item }}</li>
+            <ul>
+                <template v-if="kelas.length">
+                    <li v-for="(item, index) of kelas">{{ index+1 }} - {{ item }}</li>
+                </template>
+                <li v-else>Kelas belum tersedia</li>
             </ul>
-            <li v-else>Kelas belum tersedia</li>
 
             <h3>Perulangan (1-5)</h3>
             <ul>
@@ -59,9 +62,9 @@
             <img :src="gambar" alt="" width="500">
             <p>The Prograssive JavaScript Framework</p>
 
-            <button v-bind:class="{active: menu === 'home'}" v-on:click=" menu = 'home'">Home</button>
-            <button v-bind:class="{active: menu === 'about'}" v-on:click=" menu = 'about'">About</button>
-            <button v-bind:class="{active: menu === 'blog'}" v-on:click=" menu = 'blog'">Blog</button>
+            <a v-bind:class="{active: menu === 'home'}" href="#" v-on:click.prevent="gantiMenu('home')">Home</button>
+            <a v-bind:class="{active: menu === 'about'}" href="#" v-on:click.prevent="gantiMenu('about')">About</button>
+            <a v-bind:class="{active: menu === 'blog'}" href="#" v-on:click.prevent="gantiMenu('blog')">Blog</button>
         </header>
 
         <footer id="footer">

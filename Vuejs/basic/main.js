@@ -10,7 +10,7 @@ const vm = new Vue({
         link: '<a href="#">Link Test</a>',
         gambar: 'Image/image.jpg',
         menu: 'home',
-        kelas: [],
+        kelas: ['Golang', 'PHP'],
         numbers: [1, 2, 3, 4, 5]
     },
     methods: {
@@ -29,6 +29,14 @@ const vm = new Vue({
             return data.filter(angka => {
                 return angka % 2 == 0
             })
+        },
+        gantiMenu: function(data) {
+            this.menu = data
+        },
+        submit: function(event) {
+            let task = event.target.value
+            console.log(task);
+            // this.kelas.push(task)
         }
     },
     computed: {
