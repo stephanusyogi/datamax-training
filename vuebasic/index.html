@@ -30,12 +30,21 @@
             <img src="https://vuejs.org/images/logo.svg" width="80" alt="">
             <h1 v-text="bilangan"></h1>
             <p><input type="text" v-model="name "></p>
-            <ul>
+
+            <h3>Daftar Kelas : {{ kelas.length }}</h3>
+            <ul v-if="kelas.length">
                 <li v-for="(item, index) of kelas">{{ index+1 }} - {{ item }}</li>
             </ul>
+            <li v-else>Kelas belum tersedia</li>
+
             <h3>Perulangan (1-5)</h3>
             <ul>
                 <li v-for="x in 5">{{ x }}</li>
+            </ul>
+
+            <h3>Mencari Bilangan Genap: {{ numbers }}</h3>
+            <ul>
+                <li v-for="x in cariBilanganGenap(numbers)">{{ x }}</li>
             </ul>
             <p>{{ kelas }}</p>
             <div>
@@ -61,47 +70,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-    <script>
-        const vm = new Vue({
-            el: '#app',
-            data: {
-                name: 'Doremi Fasilasido',
-                message: "Hello World!",
-                qty: 3,
-                namaDepan: 'Stephanus',
-                namaBelakang: 'Yogi',
-                bilangan: 1,
-                link: '<a href="#">Link Test</a>',
-                gambar: 'Image/image.jpg',
-                menu: 'home',
-                kelas: ['Golang', 'PHP', 'Python']
-            },
-            methods: {
-                getName: function() {
-                    return 'Hello, ' + this.name
-                },
-                ubahNama: function(namabaru) {
-                    this.name = namabaru
-                    return this.getName()
-                },
-                handleClick: function() {
-                    this.bilangan++
-                        this.gambar = 'Image/image2.jpg'
-                }
-            },
-            computed: {
-                totalBayar: function() {
-                    return this.qty * 10000
-                },
-                namaLengkap: function() {
-                    return this.namaDepan + this.namaBelakang
-                },
-                infoBilangan: function() {
-                    return this.bilangan % 2 === 0 ? 'Genap' : 'Ganjil'
-                }
-            }
-        })
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
