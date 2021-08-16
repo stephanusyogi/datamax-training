@@ -1,0 +1,23 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "E:\\\\Develop\\\\datamax-training\\\\Nuxtjs\\\\nuxt-basic\\\\pages\\\\about.vue",
+    "chunkName": "pages/about",
+    "_name": "_9b3562e0"
+  },
+  {
+    "name": "contact",
+    "path": "/contact",
+    "component": "E:\\\\Develop\\\\datamax-training\\\\Nuxtjs\\\\nuxt-basic\\\\pages\\\\contact.vue",
+    "chunkName": "pages/contact",
+    "_name": "_9e6e823a"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "E:\\\\Develop\\\\datamax-training\\\\Nuxtjs\\\\nuxt-basic\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_5bc5ad56"
+  }
+]

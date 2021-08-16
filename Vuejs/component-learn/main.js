@@ -1,10 +1,39 @@
 // Local Component
 const Home = {
-        template: `
+    template: `
         <div>Home</div>
     `
-    }
-    // Global Component
+}
+const About = {
+    template: `
+    <div>About</div>
+`
+}
+const sectionKelas = {
+    props: ['items', 'input'],
+    template: `
+        <div>
+            <h3>Tambah Kelas :</h3>
+            <p><input type="text" placeholder="Nama Kelas" v-on:keyup.enter="$emit('submitkelas', $event)"></p>
+            <hr>
+            <h3>Daftar Kelas : {{ items.length }}</h3>
+            <ul>
+                <template v-if="items.length">
+                    <li v-for="(item, index) of items">{{ index+1 }} - {{ item }}
+                        <a href="" v-on:click.prevent="$emit('hapuskelas', index)">Hapus Kelas</a>
+                    </li>
+                </template>
+                <li v-else>Kelas belum tersedia</li>
+            </ul>
+        </div>
+    `,
+    data: function() {
+        return {}
+    },
+    methods: {}
+}
+
+// Global Component
 Vue.component('header-component', {
     props: ['nama'],
     template: `
@@ -22,47 +51,40 @@ Vue.component('header-component', {
 Vue.component('footer-component', {
     template: `
         <footer id="footer">
-            <p>copyright 2021 | Semangat Pog!</p>
+            <slot></slot>
         </footer>
     `
 })
-Vue.component('section-kelas', {
-    props: ['items', 'input'],
-    template: `
-        <div>
-            <h3>Tambah Kelas :</h3>
-            <p><input type="text" placeholder="Nama Kelas" v-on:keyup.enter="submit" v-model="input"></p>
-            <hr>
-            <h3>Daftar Kelas : {{ items.length }}</h3>
-            <ul>
-                <template v-if="items.length">
-                    <li v-for="(item, index) of items">{{ index+1 }} - {{ item }}</li>
-                </template>
-                <li v-else>Kelas belum tersedia</li>
-            </ul>
-        </div>
-    `,
-    data: function() {
-        return {}
-    },
-    methods: {
-        submit: function(event) {
-            let task = event.target.value
-            this.kelas.unshift(this.kelasbaru)
-            this.kelasbaru = ''
-        }
-    }
+
+// Routing
+const routes = [
+    { path: '/', component: Home },
+    { path: '/about', component: About },
+    { path: '/kelas', component: sectionKelas }
+]
+const router = new VueRouter({
+    mode: 'history',
+    routes
 })
 
 const vm = new Vue({
     el: '#app',
+    router,
     data: {
-        kelas: ['Golang', 'PHP'],
-        kelasbaru: ''
+        kelas: ['Golang', 'PHP']
     },
-    methods: {},
+    methods: {
+        hapuskelas: function(index) {
+            this.kelas.splice(index, 1)
+        },
+        submitkelas: function(event) {
+            let kelasbaru = event.target.value
+            this.kelas.push(kelasbaru)
+        }
+    },
     computed: {},
     components: {
-        'home': Home
+        'home': Home,
+        'about': About
     }
 })
